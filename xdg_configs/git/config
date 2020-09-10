@@ -1,0 +1,28 @@
+[advice]
+   statusHints = false
+
+[color]
+   branch = auto
+   diff = auto
+   interactive = auto
+   status = auto
+   ui = auto
+
+[diff]
+  algorithm = patience
+
+[core]
+   whitespace = -blank-at-eof, tab-in-indent
+
+[help]
+   autocorrect = 1
+
+[transfer]
+   fsckObjects = true
+
+[fetch]
+   fsckObjects = true
+
+[receive]
+   fsckObjects = true
+
