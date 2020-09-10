@@ -1,0 +1,19 @@
+# shellcheck shell=bash
+
+determine_ps1() (
+        snow="❄️"
+        outer=$(bash -ic 'echo "$PS1"')
+
+        echo "\n${snow}${outer#"\n"}"
+)
+
+alias cat=bat
+
+PS1="$(determine_ps1)"
+unset determine_ps1
+
+function emacs() {
+  echo "You probably meant vim, Graham." >&2
+  sleep .25
+  vim "$@"
+}

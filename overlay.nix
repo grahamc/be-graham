@@ -25,9 +25,8 @@ self: super: {
       XDG_CONFIG_HOME = self.grahamc.xdg_configs;
 
       shellHook = ''
-        nixpkgs-fmt ${toString ./.}
         source ${self.bash-completion}/etc/profile.d/bash_completion.sh
-        alias cat=bat
+        source ${./shell-hook}
       '';
     };
 
