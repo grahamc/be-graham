@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 determine_ps1() (
-        snow="❄️"
+        snow="\033[44m \033[0m"
         outer=$(bash -ic 'echo "$PS1"')
 
         echo "\n${snow}${outer#"\n"}"
