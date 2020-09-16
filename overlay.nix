@@ -1,9 +1,16 @@
 self: super: {
-  grahamc = {
-    about = {
+  grahamc = self.lib.makeExtensible (_: {
+    lib = self.lib.makeExtensible (_: {
+      loadJsonOr = file: default:
+        if builtins.pathExists file
+        then builtins.fromJSON (builtins.readFile file)
+        else default;
+    });
+
+    about = self.lib.makeExtensible (_: {
       name = "Graham Christensen";
       email = "graham@grahamc.com";
-    };
+    });
 
     portable-shell = self.mkShell {
       name = "be-graham";
@@ -79,5 +86,5 @@ self: super: {
     };
 
     xdg_configs = ./xdg_configs;
-  };
+  });
 }
