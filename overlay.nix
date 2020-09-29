@@ -17,10 +17,10 @@ self: super: {
 
       buildInputs = [
         self.bat
+        self.grahamc.tmux
         self.grahamc.vim
         self.nixpkgs-fmt
         self.shellcheck
-        self.tmux
       ];
 
       EDITOR = "${self.grahamc.vim}/bin/nvim";
@@ -36,6 +36,17 @@ self: super: {
         source ${./shell-hook}
       '';
     };
+
+    tmux = self.writeScriptBin "grahams-${self.tmux.name}" ''
+      ${self.bash}/bin/sh
+
+      exec ${self.tmux}/bin/tmux -l ${self.grahamc.tmuxconfig} "$@"
+    '';
+
+    tmuxconfig = self.writeText "tmux.conf" ''
+      # tmux eats ESC for 1s by default, causing vim to be slow
+      set -sg escape-time 10
+    '';
 
     vim = self.neovim.override {
       vimAlias = true;
