@@ -89,6 +89,7 @@ self: super: {
             vim-addon-nix
             vim-indent-guides
             vim-pencil
+            vim-terraform
             vim-trailing-whitespace
             vim-wordy
           ];
