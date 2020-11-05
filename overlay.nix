@@ -19,6 +19,7 @@ self: super: {
         self.bat
         self.grahamc.tmux
         self.grahamc.vim
+        self.mosh
         self.nixpkgs-fmt
         self.shellcheck
       ];
